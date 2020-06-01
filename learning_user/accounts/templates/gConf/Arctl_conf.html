@@ -1,0 +1,134 @@
+
+{% extends 'accounts/main.html' %}
+
+
+{% block content %}
+
+      <div class="content">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header text-center">
+                   <h3 class="card-title"> this list represents the Articles proposed in conference </h3>
+              </div>
+                            <div class="card-header text-center">
+                <h3 class="card-title">  {{conferance.title }}  </h3>
+              </div>
+              <div class="card-body">
+                <div class="card-header text-center">
+                            <a href="#" class="btn btn-warning">
+                 Count : {{ Nbr_Articl }}</a>
+                </div>
+                <br>
+                      <div class="card-header text-center">
+                <h3 class="card-title">Liste Of Articles </h3>
+              </div>
+                <div class="table-responsive table-upgrade">
+                  <table class="table">
+                    <thead>
+                     
+                      <th class="text-center">Title</th>
+                      <th></th>
+                      <th class="text-center">Authors</th>
+
+                    </thead>
+                    <tbody>
+                      
+                      
+                        {% for article in articles %}
+                      <tr>
+                        <td>{{article.name}}</td>
+                        <td></td>
+                        <td>{{article.author}}</td>
+                      </tr>
+                        {% endfor %}  
+
+  
+
+
+ <ul class="pagination">
+
+<!-- pagination-->
+
+{% if page_obj.has_previous %}
+    <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+{% else %}
+    <li class="disabled"><span><i class="fa fa-chevron-left" aria-hidden="true"></i></span></li>
+{% endif %}
+
+{% if page_obj.number|add:'-4' > 1 %}
+    <li><a href="?page={{ page_obj.number|add:'-5' }}">&hellip;</a></li>
+{% endif %}
+
+{% for i in page_obj.paginator.page_range %}
+    {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only"> (current) </span></span></li>
+    {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5' %}
+        <li><a href="?page={{ i }}">_{{ i }}_</a></li>
+    {% endif %}
+{% endfor %}
+
+{% if page_obj.paginator.num_pages > page_obj.number|add:'4' %}
+    <li><a href="?page={{ page_obj.number|add:'5' }}">&hellip;</a></li>
+{% endif %}
+
+{% if page_obj.has_next %}
+    <li><a href="?page={{ page_obj.next_page_number }}"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+{% else %}
+    <li class="disabled"><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>
+{% endif %}
+
+</ul>
+<!-- end Pagination -->                     
+                      
+                      <tr>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                          
+                        </td>
+                        <td class="text-center">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Background</li>
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger background-color">
+            <div class="badge-colors text-center">
+              <span class="badge filter badge-primary active" data-color="primary"></span>
+              <span class="badge filter badge-info" data-color="blue"></span>
+              <span class="badge filter badge-success" data-color="green"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="adjustments-line text-center color-change">
+          <span class="color-label">LIGHT MODE</span>
+          <span class="badge light-badge mr-2"></span>
+          <span class="badge dark-badge ml-2"></span>
+          <span class="color-label">DARK MODE</span>
+        </li>
+        
+        <br>
+          <br>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

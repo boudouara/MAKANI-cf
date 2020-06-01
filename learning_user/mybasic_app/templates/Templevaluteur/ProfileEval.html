@@ -1,0 +1,541 @@
+{% extends 'Templevaluteur/Dachboardeval.html' %}
+{% load static %}
+{% block content %}
+
+
+
+  <div class="wrapper">
+    <div class="page-header">
+      <div class="container align-items-center">
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <h1 class=" text-left"> •  Session Evaluateur (reviewer) </h1>
+            </div>
+          </div>
+
+ 
+
+<p>
+<a href="#"> o    Consulter les articles,
+,</a>
+</p> <br>
+<p>
+ <a href="#"> o    Sélectionner les articles pour reviewing,
+</a>
+</p> <br>
+<p>
+ <a href="#"> o    Marquer les articles en conflit </a>
+</p><br>
+<p>
+<a href="#">  o    Dépôt des résultats de reviewing.</a>
+</p>
+
+<br><br><br>
+
+          <div class=" col-md-8 ml-auto mr-auto">
+            <div class="card card-coin card-plain">
+              <div class="card-header">
+
+
+              <a href="{{ user.profile_pict.url }}">
+                     <img class="img-center img-fluid rounded-circle"
+
+                     src="{{ user.profile_pict.url }}" >
+                      <h5 class="title"></h5>
+                    </a>
+
+
+                <h3 class="title"> Full Name: </h3>
+                <h4 class="title" > {{ user.first_name }} {{ user.last_name }}</h4>
+
+              </div>
+
+              <div class="card-body">
+       <button><a href="{% url 'evaluteur:EditeProfileAs_eval' pk=user.pk %}"> Edite My Profile>> </a>
+                 </button>
+                <ul class="nav nav-tabs nav-tabs-primary justify-content-center">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#linka">
+                      << 01 >>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkb">
+                      << 02 >>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkc">
+                      << 03 >>
+                    </a>
+                  </li>
+                  
+                    <li class="nav-item">
+                    <a class="nav-link " data-toggle="tab" href="#linkd">
+                      << 04 >>
+                    </a>
+                  </li>
+                </ul>
+                <div class="tab-content tab-subcategories">
+                  <div class="tab-pane active" id="linka">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label">Username :  </label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                        <h4 class="text-white"> {{ user.username }}
+                        </h4>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label">Email:</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                         <h4 class="text-white">                   
+                            {{ user.email }}
+                           </h4>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  <div class="row">
+                      <label class="col-sm-3 col-form-label">First Name:</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                         <h4 class="text-white">                   
+                            {{ user.first_name }}
+                           </h4>
+
+                        </div>
+                      </div>
+                    </div>
+                                    <div class="row">
+                      <label class="col-sm-3 col-form-label">Last Name:</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                         <h4 class="text-white">                   
+                            {{ user.last_name }}
+                           </h4>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="tab-pane" id="linkb">
+                               <div class="row">
+                      <label class="col-sm-3 col-form-label">Organization :  </label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                        <h4 class="text-white"> {{ user.Organization }}
+                        </h4>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label">Phone:</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                         <h4 class="text-white">                   
+                            {{ user.Phone }}
+                           </h4>
+
+                        </div>
+                      </div>
+                    </div>
+
+
+
+             <div class="row">
+                      <label class="col-sm-3 col-form-label">Adersse 01(Principale):</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                         <h4 class="text-white">                   
+                            {{ user.Address_line_principale }}
+                           </h4>
+
+                        </div>
+                      </div>
+                    </div>
+
+             <div class="row">
+                      <label class="col-sm-3 col-form-label">Adersse02:</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                         <h4 class="text-white">                   
+                            {{ user.Address_line }}
+                           </h4>
+
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div class="tab-pane" id="linkc">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label">Country</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                  
+                        <h4 class="text-white">                   
+                           {{ user.Country }}
+                           </h4>
+                        </div>
+                      </div>
+                    </div>
+                                
+                      <div class="row">
+                      <label class="col-sm-3 col-form-label">City</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                <h4 class="text-white">                   
+                        {{ user.City }}
+                      </h4>
+
+                        </div>
+                      </div>
+                    </div>
+                                <div class="row">
+                      <label class="col-sm-3 col-form-label">Country</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                   <h4 class="text-white">
+                          {{ user.Country }}
+
+                                </h4>
+                        </div>
+                      </div>
+                    </div>
+
+                
+
+          <div class="row">
+                      <label class="col-sm-3 col-form-label">Poste code</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                          <h4 class="text-white">                   
+                 {{ user.Post_code }}
+                    </h4>
+                        </div>
+                      </div>
+                    </div></div>
+
+
+                  <div class="tab-pane" id="linkd">
+
+               <div class="row">
+                      <label class="col-sm-3 col-form-label">ID :</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+               <h4 class="text-white">                   
+                       5q1xg4!6ml!u{{ user.pk }}k7g2 
+                     </h4>
+                        </div>
+                      </div>
+                    </div>
+
+                                
+                      <div class="row">
+                      <label class="col-sm-3 col-form-label">Site</label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                            <a    href={{ user.site_Personnel }}> {{ user.site_Personnel }}</a>
+
+                        </div>
+                      </div>
+                    </div>
+                        
+                  <div class="row">
+                      <label class="col-sm-3 col-form-label">See more detail or change  ,update ... </label>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+          <h4 class="text-white">                  
+                          <a href="{% url 'evaluteur:EditeProfileAs_eval' pk=user.pk %}">
+                           More ! </a>
+                         </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>  
+</div>
+      </div>
+    </div>
+<br><br><br>
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
+
+
+         <div class="container ">
+
+              <button href="#" class="btn btn-simple btn-success btn-info-user">
+                <i class="tim-icons icon-bulb-63"></i> Voir etat de Ma Article !
+              </button>
+            </div>
+
+<br><br><br>
+
+         <div class="container ">
+
+              <button href="#" class="btn btn-simple btn-success btn-info-user">
+                <i class="tim-icons icon-bulb-63"></i>  Voir exmplaire & et comment Poste mon Article
+              </button>
+            </div>
+
+<br><br><br>
+
+    <div class="section">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-md-6">
+            <div class="row justify-content-between align-items-center">
+         
+
+       <div class="col-md-5">
+            <h1 class="profile-title text-left">Contact us , pour ++ d'info !</h1>
+            <h5 class="text-on-back">les dates important  </h5>
+            <p class="profile-description text-left">
+              <br>
+déposé article   
+<br>
+  date limite soumission <br>
+      revieuers(évaluation) 
+    <br> date fin évaluation   
+
+ préparation chercheur  conférence   
+ <br>     date de conférence
+ <br>      conférence 
+ 
+ <br>     Sinon  "annuler" 
+
+              </p>
+
+            </div>
+
+
+            </div>
+          </div>
+          <div class="col-md-5">
+            <h1 class="profile-title text-left">My etape avnat choix d'Article Regles</h1>
+            <h5 class="text-on-back">Des regles </h5>
+            <p class="profile-description text-left">
+
+
+Un évaluateur est une personne ayant développé une certaine expertise dans un ou plusieurs thèmes évoqués par la conférence. Celle-ci est alors invitée à partager ses connaissances, en évaluant les articles soumis par les auteurs, afin de décider de leur pertinence.
+
+
+**L’évaluateur accède à la liste des thèmes 
+**En cliquant sur un thème, le système affiche la liste des articles (choisit par l’administrateur ) qui s’articulent autour de celui-ci. 
+
+** peut télécharger l’article en format PDF.
+**Après la lecture de chaque article, l’évaluateur doit remplir une fiche d’évaluation (represanté dans le site ) pour noter ses impressions :
+- La note[    PRESENTATION 
+              Fautes
+              Originalité / consommé( elle existe déjà) 
+              Technicité       ]
+- Les mots clés 
+
+Commentaires  (accepter)
+ 
+- Accepter (no / minor /major revision )
+Algorithme rôle : Chaque évaluateur nombre article à corriger + 1 article (conflit )
+Cette dernière peut prendre plusieurs formats c’est a dire structure ou la forme  (Note sur la présentation, note sur le contenu, …).
+
+
+
+
+
+ 
+
+            </p>
+   
+          </div>
+        </div>
+      
+      </div>
+      
+    </div>
+
+             <div class="btn-wrapper pt-3 ">
+
+              <button href="#" class="btn btn-simple btn-success btn-info-user">
+                <i class="tim-icons icon-bulb-63"></i> nouveau theme et nouveau dates !
+              </button>
+         
+</div>
+<br><br><br>
+  <section class="section">
+    <div class="container">
+      <div class="row">
+
+
+  <div class="col-md-6">
+          <div class="card card-plain">
+            <div class="card-header">
+              <h1 class="profile-title text-left">*****  By Makani-CF- ******</h1>
+              <h5 class="text-on-back">Just click ,Pour contact </h5>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      
+<h2 class="text-white">
+          Contact Rapide By email off user !! ,
+<br>
+you need to use You'r email  off signin , 
+    </h2>
+           
+                    </div>
+                  </div>
+                 
+                </div>
+                <button type="submit" class="btn btn-primary btn-round float-right" >
+               <a href="{% url 'evaluteur:Contact_eval_ou_admin' %}"> <<< Send iT >>>  </a>
+              </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+
+        <div class="col-md-4 ml-auto">
+          <div class="info info-horizontal">
+            <div class="icon icon-primary">
+              <i class="tim-icons icon-square-pin"></i>
+
+            </div>
+            <div class="description">
+              <h4 class="info-title">Find us at the office</h4>
+              <p> Makani@gemail.com
+                <br> ESI SBA ,
+                <br> Algeria
+              </p>
+            </div>
+          </div>
+          <div class="info info-horizontal">
+            <div class="icon icon-primary">
+              <i class="tim-icons icon-mobile"></i>
+            </div>
+            <div class="description">
+              <h4 class="info-title">Give us a ring</h4>
+              <p> 
+                <br> +47 77 77 777 777 77 
+                <br> Mon - Mai, 2020 - 06 -10
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+<br><br><br>
+<br><br><br>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h1 class="title"></h1>
+          </div>
+        
+          <div class="col-md-3">
+            <ul class="nav">
+              <li class="nav-item">
+                 <a href="{% url 'evaluteur:Contact_eval_ou_admin' %}"  class="nav-link">
+                  Contact Us
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'Aboute__Us' %}" class="nav-link">
+                  About Us
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  License
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h3 class="title">Follow us:</h3>
+            <div class="btn-wrapper profile">
+              <a target="_blank" href="#" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a target="_blank" href="#" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Like us">
+                <i class="fab fa-facebook-square"></i>
+              </a>
+              <a target="_blank" href="#" class="btn btn-icon btn-neutral  btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
+                <i class="fab fa-dribbble"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

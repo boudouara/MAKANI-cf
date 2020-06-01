@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Makani</title>
+	
+   
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+  <link rel="stylesheet" href= "{% static "css/main.css" %}">
+
+</head>
+<body>
+
+
+
+  <!--start Upper Navbar-->
+  <div class="upper-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <i class="fa fa-phone"></i> <span>07100089000</span> ,
+          <i class="fa fa-envelope"></i> MembreMakani@MAKANI.CF
+        </div>
+        <div class="col-sm text-right">
+          <span>let's Share </span>
+          2020 ... 
+          <span class="get-Quoat"> Easy with MAKANI -CF-  every time and every where </span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!--end Upper Navbar-->
+
+    <!--start  Navbar-->
+
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class=" container">
+      <a class="navbar-brand" href="{% url "homme" %}">
+        <span>MAKANI</span><span>- CF -</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span> OPTIONS  </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+     
+     
+            <li class="nav-item">
+             <a  class="nav-link" href="{% url 'Contact_Info_Adminstration:contact' %}" > Contact Now ! </a>
+          </li>
+
+
+
+           <li class="nav-item">
+              <a  class="nav-link" href="{% url 'homme' %}" > Homme </a>
+             </li>
+
+           
+     
+     
+{% if user.is_authenticated %}
+
+      
+        <li class="nav-item active ">
+        <a  class="nav-link" href="{% url 'logout' %}"> Logout</a>
+        </li>
+
+
+          {% if user.is_evaluteur %}
+        <li class="nav-item active ">
+        <a  class="nav-link"  href="{% url "evaluteur:dashboardeval" %}"> Back to Profile </a>
+         </li>
+
+          {% endif %}  
+      
+
+         
+           {% if user.is_chercheur %}
+   <li class="nav-item active ">
+        <a  class="nav-link"  href="{% url "chercheur:dashboardchrch" %}"> Back to Profile </a>
+         </li>
+          {% endif %}  
+
+
+
+    
+     {% if user.is_superuser %}
+
+         <li class="nav-item active ">
+        <a  class="nav-link"  href="{% url "/MakaniAdmin" > Back to Profile </a>
+         </li>
+          {% endif %}  
+
+
+
+
+
+
+ {% else %}
+   
+
+
+ <li>
+       <a href="{% url 'login' %}">log in</a>. If you are new 
+</li>
+
+<li>
+    <a href="{% url 'chercheur_signup' %}">Chercheur account</a> 
+    
+    or a <a href="{% url 'evaluteur_signup' %}">Evaluteur account</a>.
+</li>
+
+
+  {% endif %}
+
+       
+
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+
+
+
+
+
+
+{% block body_block %}
+
+<h3>   NON inhertinces !! </h3>
+
+{% endblock %}
+
+
+
+
+
+<br><br>
+
+
+<div class=" Copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col text-left text-uppercase">
+        Copyright 2020 MAKANI_cf &copy All Right Riserved
+      </div>
+      <div class="col text-right">
+        <ul class="list-unstyled">
+          <li>
+            <a href="#"> <i class="fa fa-facebook"></i></a>
+          </li>
+          <li>
+            <a href="#"> <i class="fa fa-envelope"></i></a>
+          </li>
+          <li>
+            <a href="#"> <i class="fa fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#"> <i class="fa fa-google-plus"></i></a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+ <!--end Upper coprghtt-->
+
+
+
+
+
+
+
+  <script src="{% static "js/jquery-3.4.1.min.js" %}"></script>
+  <script type="popper" src="{% static "popper.js" %}"></script>
+
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+  <script src="{% static "js/main.js" %}"></script>
+
+</body>
+</html>

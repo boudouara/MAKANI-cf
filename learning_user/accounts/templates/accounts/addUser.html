@@ -1,0 +1,130 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+      <div class="content">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="title">Create User Profile</h5>
+              </div>
+              <div class="card-body">
+                <form method="post">
+                  {% csrf_token %}
+        <div class="container">
+
+<h4> This person is : </h4>
+  {{ form.is_chercheur}} Choice as Researcher
+
+<br><br>
+    {{ form.is_evaluteur}} Choice as Evaluator
+
+ </div>
+
+{{ form|crispy}}
+                   </div>
+              <div class="card-footer">
+                <a class="btn btn-warning" href="{% url 'dashboard' %}">Cancel</a>
+                          
+                                  
+                                  <input class="btn btn-success" type="submit" value="Update"/>
+              </div>
+            </div>
+          </div>
+
+
+
+        <!--partie photo de profile et description -->
+          <div class="col-md-4">
+            <div class="card card-user">
+              <div class="card-body">
+                <p class="card-text">
+                  <div class="author">
+
+                    <a href="javascript:void(0)">
+                      <img class="avatar" src="{{object.profile_pic.url}}" alt="...">
+                      <h5 class="title">Le nome de perssone</h5>
+                    </a>
+
+
+                    <p class="description">
+                      CH/Evl
+                    </p>
+                  </div>
+                </p>
+                <div class="card-description">
+                  ndrilehe discription 3l hsab ya  ch ya eval
+                  Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="button-container">
+                  <button href="javascript:void(0)" class="btn btn-icon btn-round btn-facebook">
+                    <i class="fab fa-facebook"></i>
+                  </button>
+                  <button href="javascript:void(0)" class="btn btn-icon btn-round btn-twitter">
+                    <i class="fab fa-twitter"></i>
+                  </button>
+                  <button href="javascript:void(0)" class="btn btn-icon btn-round btn-google">
+                    <i class="fab fa-google-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+                </form>
+             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Background</li>
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger background-color">
+            <div class="badge-colors text-center">
+              <span class="badge filter badge-primary active" data-color="primary"></span>
+              <span class="badge filter badge-info" data-color="blue"></span>
+              <span class="badge filter badge-success" data-color="green"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="adjustments-line text-center color-change">
+          <span class="color-label">LIGHT MODE</span>
+          <span class="badge light-badge mr-2"></span>
+          <span class="badge dark-badge ml-2"></span>
+          <span class="color-label">DARK MODE</span>
+        </li>
+
+          
+      </ul>
+    </div>
+  </div>
+ {% endblock %}

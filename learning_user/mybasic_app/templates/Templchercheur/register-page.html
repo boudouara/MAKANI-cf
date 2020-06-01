@@ -1,0 +1,83 @@
+{% extends 'Templchercheur/mainchr.html' %}
+{% load static %}
+{% block body_block %}
+ <br><br><br>
+<div class="d-flex justify-content-center">
+
+        <div class="wrapper">
+    <div class="page">
+      <img src="{% static 'G-Admin_cherch_eval/img/dots.png' %}" class="dots">
+      <img src="{% static 'G-Admin_cherch_eval/img/path1.png' %}" class="path">
+
+
+              <div class="card card-register" style="width:870px">
+                <div class="card-header">
+                  <img class="card-img" src="{% static 'G-Admin_cherch_eval/img/dots.png' %}" alt="Card image">
+                  <h4 class="card-title">  </h4>
+                </div>
+                <div class="card-body" style="width: 800px">
+                  <form class="form" method="post" enctype="multipart/form-data">
+                   
+                    {% csrf_token %}
+
+                    <div class="input-group" >
+                      <div class="input-group-prepend"  style="padding-right:5px" >
+                        <div class="input-group-text" style="width:60px">
+                          <i class="tim-icons icon-badge"></i>
+                        </div>
+                      </div>
+
+                      {{formset.name}}
+
+                    </div>
+
+                    <div class="">
+
+                      {{formset.description | safe}}
+                      {{formset.media}}
+                    </div>
+
+                    <div class="input-group">
+
+                            <div class="nav-item">
+                              <div class="item1">
+                                <p>select Conferance: <span>*</span></p>
+                                {{formset.Conferance}}
+
+                              </div>
+
+                              </div>
+                        </div>
+                  <p>here you can download your article <span></span></p>
+               <input class="btn " type="file" name="document">
+
+                  <button type="submit">Upload</button>
+
+                    <div class="form-check text-left">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox">
+                        <span class="form-check-sign"></span>
+                        I agree to the
+                        <a href="javascript:void(0)">terms and conditions</a>.
+                      </label>
+                    </div>
+
+                    <input class="btn btn-secondary" type="submit" name="Submit">
+                  </form>
+
+               
+           </div>
+         </div>
+       </div>
+     </div>
+
+          </div>
+
+
+           
+          
+          
+</div>
+
+  
+{% endblock %}

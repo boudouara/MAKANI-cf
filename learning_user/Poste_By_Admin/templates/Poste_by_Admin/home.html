@@ -1,0 +1,13 @@
+{% extends "Poste_by_Admin/base.html" %}
+
+{% block content %}
+
+
+
+{% for a in blog_list %}
+    {% include 'blog/list-inline.html' with blog_post=a truncate=True detail=False %}
+{% endfor %}
+
+
+    
+{% endblock %}

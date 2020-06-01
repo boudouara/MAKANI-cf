@@ -1,0 +1,39 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content %}
+                        <div id="deleteEmployeeModal" >
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+
+                              <form  method="POST">
+                                {% csrf_token %}
+                                <div class="modal-header">						
+                                  <h4 class="modal-title">Delete  username :
+                                    
+                                   {{ object.username}}
+
+                                   </h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <a href="{% url 'ges_eval' %}"> Fermer &times;</a>
+                                  </button>
+                                </div>
+
+                                <div class="modal-body">					
+                            <p>Are you sure you want to delete Username : 
+                                 {{ object.username}} ?</p>
+
+                                  <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                </div>
+                               
+                                <div class="modal-footer">
+                                  
+                                  <a class="btn btn-warning" href="{% url 'ges_cher' %}">Cancel</a> <!--annuler-->
+                                  <input class="btn btn-danger" type="submit" name="Confirm">     <!-- supprier-->
+                                </div>
+                              </form>
+
+                            </div>
+                          </div>
+                        </div>
+{% endblock %}

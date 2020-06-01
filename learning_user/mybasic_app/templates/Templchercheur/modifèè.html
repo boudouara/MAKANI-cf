@@ -1,0 +1,83 @@
+{% extends 'Templchercheur/mainchr.html' %}
+{% load static %}
+{% block body_block %}
+  <br><br><br><br>
+<div class="container">
+      <div class="page-header-image"></div>
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-md-6 offset-lg-0 offset-md-3">
+              
+              <div class="card card-register" style="width:870px">
+                <div class="card-header">
+                  <img class="card-img" src="{% static 'G-Admin_cherch_eval/img/square1.png' %}" alt="Card image">
+                  <h6 class="card-title"> Modifie Article : </h6> 
+
+                </div>
+                <div class="card-body" style="width: 800px">
+                  <form class="form" method="post" enctype="multipart/form-data">
+                   
+                    {% csrf_token %}
+
+                    <div class="input-group" >
+                      <div class="input-group-prepend"  style="padding-right:5px" >
+                        <div class="input-group-text" style="width:60px">
+                          <i class="tim-icons icon-badge"></i>
+                        </div>
+                      </div>
+
+                      {{formset.name}}
+
+                    </div>
+
+                    <div class="">
+
+                      {{formset.description | safe}}
+                      {{formset.media}}
+                    </div>
+
+                    <div class="input-group">
+
+                            <div class="nav-item">
+                              <div class="item1">
+                                <p>select Conferance: <span>*</span></p>
+                                {{formset.Conferance}}
+
+                              </div>
+                              </div>
+
+                        </div>
+
+        <h4>  la Modification or changement  le Document  d'article:</h4>
+                      <div class="">
+                        <h6> LE DOCUMENT CURRENTLY  :</h6>
+                     {{formset.document}}
+                    <h6> Click Choose File pour changer !!!</h6>
+                              </div>
+                    
+
+                    <div class="form-check text-left">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox">
+                        <span class="form-check-sign"></span>
+                        I agree to the
+                        <a href="javascript:void(0)">terms and conditions</a>.
+                      </label>
+
+                           <input class="btn btn-warning" type="submit" name="Submit">
+                  </div>
+                    </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+{% endblock %}

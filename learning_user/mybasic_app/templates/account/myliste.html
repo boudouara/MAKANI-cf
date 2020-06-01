@@ -1,0 +1,58 @@
+{% extends 'account/etat_Fg.html' %}
+
+{% block body_block %}
+  
+
+<h1> the liste </h1>
+<br><br><br><br>
+<h2>{{ls.name}}</h2>
+<div class="container">
+<form method="post"  >
+{% csrf_token %}
+
+{% for item in ls.item_set.all %}
+<div class="input-group mb-3">
+	<div class="input-group-prepend">
+		<div class="input-group-text">
+		    {% if item.complete == True %}
+		    <input type="checkbox", value="clicked", 
+		    name="c{{item.id}}" checked>			
+
+             {% else %}
+             <input type="checkbox", value="clicked", 
+             name="c{{item.id}}">
+ 
+             {% endif %}
+		</div>
+
+	</div>
+
+<input type="text" value="{{item.text}}" class="form-control">
+</div>
+{% endfor %}
+       
+
+        <div class="input-group mb-3">
+        	<div class="input-group-prepend">
+        		
+          <button type="submit" , name="newItem" , value="newItem" ,
+           class="bt btn-success"> Add Item </button>
+        	</div>
+        	<input type="text", name="new">
+        </div>
+
+        <button type="submit", name="save" , value="save", 
+        class="btn btn-success" 
+        action="{% url "mynote" %}" >
+         Save </button>
+
+
+
+</form>
+<br><br><br><br><br>
+
+
+</div>
+<a type="submit", class="btn btn-success" href="{% url 'LoginByProfile' %}" >
+         Back to my Profile   </a>
+{% endblock %}

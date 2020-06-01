@@ -1,0 +1,45 @@
+<!-- Delete Modal HTML -->
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="content">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header text-center">
+                        <div id="deleteEmployeeModal" >
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+
+                              <form  method="POST">
+                                {% csrf_token %}
+                                <div class="modal-header">						
+                                  <h4 class="modal-title">Delete  {{object.title}}</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+
+                                <div class="modal-body">					
+                                  <p>Are you sure you want to delete the Conferance "{{object.title}}"" ?</p>
+                                  <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                </div>
+                               
+                                <div class="modal-footer">
+                                  
+                                  <a class="btn btn-warning" href="{% url 'ges_conf' %}">Cancel</a> <!-- annuler -->
+                                  <input class="btn btn-danger" type="submit" name="Confirm">  <!-- supprimer-->
+                                </div>
+                              </form>
+
+                            </div>
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+{% endblock %}

@@ -1,0 +1,118 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position :center;
+  background-size: 100% 100% ;
+}
+
+.h2.form-signin-heading{
+  color: #ffffff;
+position: center ;
+border-top: 
+}
+
+label.checkbox{
+  color: #ffffff;
+}
+
+.form-signin {
+  
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  position : 30%;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 15px;
+}
+.form-signin .form-control:focus {
+  z-index: 3;
+}
+.form-signin input[type="text"] {
+  border-width: 2px;
+  width: 330px;
+  border-color:#188fff ;
+  height: 43px;
+  margin-bottom: -1px;
+  
+
+}
+.form-signin input[type="password"] {
+  width: 330px;
+  margin-bottom: 10px;
+  height: 43px;
+  
+  border-width: 2px;
+ 
+  border-color:#188fff ;
+  
+
+
+}
+.form-signin input[type="date"] {
+  width: 330px;
+  margin-bottom: 10px;
+  height: 47px;
+  border-width: 2px;
+ 
+  border-color:#188fff ;
+  
+
+}
+
+.form-signin button[type="submit"]{
+  background-color:#188fff;
+
+  border: none;
+  color:black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  padding: var(--spacing) calc(var(--spacing) * 2);
+  margin-top: 10px;
+  outline: none !important;
+  height: 40px;
+  border-radius: 10px;
+  width: 330px;
+  
+
+}
+
+
+    /* Set a style for the submit button */
+    .btn {
+      background-color: #188fff;
+      color: white;
+      padding: 15px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+
+
+
+
+    .t{
+  padding: 5px 5px;
+      width: 80%;
+      opacity: 1.8;
+    }
+    

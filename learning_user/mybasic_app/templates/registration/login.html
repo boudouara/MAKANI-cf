@@ -1,0 +1,69 @@
+{% extends 'account/mybase.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block body_block %}
+  
+
+ <div class="container">
+
+
+  {% if form.non_field_errors %}
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {% for error in form.non_field_errors %}
+        <p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p>
+      {% endfor %}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      {% endif %}
+      <form class="form-signin" role="form"  action="{% url 'login' %}"  method="POST">
+{% csrf_token %}
+
+        <h2 class="form-signin-heading" >Connexion </h2>
+    
+        <div class="input-container">
+          <i class="fa fa-user icon"></i>
+
+          <label for="username"> </label>
+          <input class="form-control" type="text" placeholder="Username" name="username" required autofocus>
+        </div>
+        
+        <div class="input-container">
+            <i class="fa fa-pssw icon2"></i>
+            <label for="password">  </label>
+            <input class="form-control" type="password" placeholder="Password" name="password" required autofocus>
+          </div>
+
+
+        <br> 
+        <button class="form-signin" type="submit" value="login">login</button>
+           <button type="reset" class="form-signin t ">Reset</button>
+      
+        <br><br><br>
+
+        <p><a id="forgotPassword" class=" btn btn-secondary t "
+          href="{% url 'password_reset' %}">Forgot your password or your username ?</a></p>
+        <br>
+
+      
+    <a href="{% url 'chercheur_signup' %}">Chercheur account</a> 
+    or a  <a href="{% url 'evaluteur_signup' %}">Evaluteur account</a>.
+     
+
+      
+      
+
+      </form>
+    </div>
+
+
+
+
+
+
+{% endblock %}
+
+

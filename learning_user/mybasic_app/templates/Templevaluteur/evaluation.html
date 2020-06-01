@@ -1,0 +1,87 @@
+{% extends 'Templevaluteur/Dachboardeval.html' %}
+
+
+{% block content %}
+
+
+    <!--start section evaluation-->
+
+<h1> min ybda ykhyre mn dok liste artcile ji behe hnaa w y3mer info bch ynjem ybda ysahehe</h1>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-11">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="title">Evaluation</h5>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-5 pr-md-1">
+                    <div class="form-group">
+                      <label>ID (disabled)</label>
+                      <input type="text" class="form-control" disabled="" placeholder="CID" value="ID">
+                    </div>
+                  </div>
+                  <div class="col-md-3 px-md-1">
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input type="text" class="form-control" placeholder="Username" value="CHAKIB">
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-md-1">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" placeholder="evaluateur@email.com">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label>  Article's Name</label>
+                      <input type="text" class="form-control" placeholder="Article" value="article">
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-md-1">
+                    <div class="form-group">
+                      <label>Name of Confernce</label>
+                      <input type="text" class="form-control" placeholder="Confernce" value="Devlopement Web">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-10 pr-md-1">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Your Evaluation</label>
+                      <select class="form-control" id="exampleFormControlSelect1">
+                        <option> Strong Accepted</option>
+                        <option>Accepted With Conditions</option>
+                        <option>jsp nsitha</option>
+                        <option>Week 
+                          Refuse</option>
+                        <option>
+                            Strong Refuse</option>
+                      </select>
+                    </div>
+                  </div>
+                  </div>
+               
+                
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <label>Comments</label>
+                      <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your Comments About The Article" value="Mike">  </textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-fill btn-primary">Send</button>
+            </div>
+          </div>
+        </div>
+    <!--end section evaluation-->
+   {% endblock %}

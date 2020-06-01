@@ -1,0 +1,149 @@
+{% extends 'accounts/main.html' %}
+
+
+{% block content %}
+
+      <div class="content">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header text-center">
+                <h4 class="card-title">liste Evaluateur </h3>
+                  <p class="card-category">cette liste représentent les   évaluateurs des conférences  et qui participent dans notre entreprise</p>
+              </div>
+              <div class="card-body">
+                <div class="col-sm-6">
+                                  
+                         <a href="{% url 'createEval' %}" class="btn btn-success"><i class="material-icons"></i> <span>Add</span></a>
+                         <a href="{% url 'ges_eval' %}" class="btn btn-warning">Count : {{ number }} Evaluateur </a>
+                </div>
+                <div class="table-responsive table-upgrade">
+                  <table class="table">
+                    <thead>
+                      <th></th>
+                      <th class="text-center">Delete</th>
+                      <th class="text-center">Edite</th>
+                      <th class="text-center">Detailes</th>
+                    </thead>
+                    <tbody>
+                 
+               
+                        {% for evaluateur in user_list  %}
+                        {% if evaluateur.is_evaluteur %}
+                       
+                      <tr>
+                        <td>
+                         <a href="{% url 'editEval' pk=evaluateur.pk %}">
+                          Username : {{evaluateur.username}}
+                      </a>
+                      </td>
+                        <!-- supprimer eval-->
+                        <td class="text-center">
+                          <a href="{% url 'deleteEval' pk=evaluateur.pk %}">
+                          <i class="tim-icons icon-trash-simple text-danger"></i></td>
+                        <!-- modifier eval-->
+                        <td class="text-center">
+                         <a href="{% url 'editEval' pk=evaluateur.pk %}">
+                          <i class="tim-icons icon-pencil text-pencil"></i>
+                          </a></td>  
+
+                         <td class="text-center">
+                         <a href="{% url 'editEval' pk=evaluateur.pk %}">
+                           <i class="fa fa-search "></i> 
+                            </a></td>  
+
+
+                      </tr>
+                    {% endif %}
+                        {% endfor %}
+                     
+
+                        <ul class="pagination">
+
+
+
+
+<!-- pagination-->
+
+{% if page_obj.has_previous %}
+    <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+{% else %}
+    <li class="disabled"><span><i class="fa fa-chevron-left" aria-hidden="true"></i></span></li>
+{% endif %}
+
+{% if page_obj.number|add:'-4' > 1 %}
+    <li><a href="?page={{ page_obj.number|add:'-5' }}">&hellip;</a></li>
+{% endif %}
+
+{% for i in page_obj.paginator.page_range %}
+    {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only"> (current) </span></span></li>
+    {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5' %}
+        <li><a href="?page={{ i }}">_{{ i }}_</a></li>
+    {% endif %}
+{% endfor %}
+
+{% if page_obj.paginator.num_pages > page_obj.number|add:'4' %}
+    <li><a href="?page={{ page_obj.number|add:'5' }}">&hellip;</a></li>
+{% endif %}
+
+{% if page_obj.has_next %}
+    <li><a href="?page={{ page_obj.next_page_number }}"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+{% else %}
+    <li class="disabled"><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>
+{% endif %}
+
+</ul>
+<!-- end Pagination -->                     
+                      
+                      <tr>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                          
+                        </td>
+                        <td class="text-center">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Background</li>
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger background-color">
+            <div class="badge-colors text-center">
+              <span class="badge filter badge-primary active" data-color="primary"></span>
+              <span class="badge filter badge-info" data-color="blue"></span>
+              <span class="badge filter badge-success" data-color="green"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="adjustments-line text-center color-change">
+          <span class="color-label">LIGHT MODE</span>
+          <span class="badge light-badge mr-2"></span>
+          <span class="badge dark-badge ml-2"></span>
+          <span class="color-label">DARK MODE</span>
+        </li>
+        
+        <br>
+          <br>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

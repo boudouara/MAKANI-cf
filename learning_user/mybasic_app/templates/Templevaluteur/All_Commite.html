@@ -1,0 +1,53 @@
+{% block body_block %}
+
+
+
+ 
+    <div class="content">
+      <div class="row">
+        <div class="col-md-11">
+          <div class="card">
+ 
+<h1 > 
+Nombre de Tous des Commite  : <br> {{ nbrCommite }} Commite 
+</h1>
+<hr>
+  <h2 style="color:blue;"> La Liste des  Commites :
+  <br>   </h2>
+
+       {% for cm in commite_list %}
+       <hr><hr>
+            <ul>
+            	<br><br>
+             <li>
+
+ <h1> les Mombers de commite   : </h1>
+       {% for evl in cm.evaluteur_list.all  %}
+          
+         <li>  {{ evl }}  </li>
+
+          {% endfor %}
+
+          <h4>de L'organisation : :  {{cm.Organizationof_Commite}} </h4> 
+
+           <h4> dans Theme   :  {{cm.sepiceilite}} </h4>
+
+           <h4> par email    :  {{cm.email}} </h4>
+         
+         <h4> Info spiciel pour cette commite  :  {{cm.autre_Info}}</h4>
+         
+
+                                    </li>
+         </ul>
+        {% endfor %}
+    
+</div>
+</div>
+</div>
+</div>
+
+  
+
+
+
+{% endblock %}

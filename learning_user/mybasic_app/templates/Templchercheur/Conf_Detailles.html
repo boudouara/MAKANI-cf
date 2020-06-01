@@ -1,0 +1,142 @@
+{% extends 'Templchercheur/mainchr.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block body_block %}
+<div class="wrapper">
+    <div class="page">
+      <img src="{% static 'G-Admin_cherch_eval/img/dots.png' %}" class="dots">
+      <img src="{% static 'G-Admin_cherch_eval/img/path1.png' %}" class="path">
+
+
+
+      <div class="content">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header text-center">
+                <h4 class="card-title">list of conferences </h4>
+                  <p class="card-category">
+this list represents the Conferences offered by your company</p>
+              </div>
+
+        <thead>
+                      <th class="text-center" ><h3 class="title"> {{ conferance.title}} </h3></th>
+                    </thead>
+
+
+
+              <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                <div class="container">
+     
+
+               <div class="card-body">
+                  <table class="table">
+                    
+                      
+                      <li > title  : {{conferance.title}}</li>
+                      <li > email : {{conferance.email}}</li>
+                      <li > topic : {{conferance.topic}}</li>
+                      <li > link : {{conferance.link}}</li>
+                   
+                
+                     
+                      
+                      <li > start_day_sub : {{conferance.start_day_sub}}</li>
+                      <li > end_day_sub : {{conferance.end_day_sub}}</li>
+                      <li > start_day_eval : {{conferance.start_day_eval}}</li>
+                      <li > end_day_eval : {{conferance.end_day_eval}}</li>
+                   
+
+
+      
+                      <li > adress : {{conferance.adress}}</li>
+                      <li > country : {{conferance.country}}</li>
+                      <li > postal_code : {{conferance.postal_code}}</li>
+                      <li > city : {{conferance.city}}</li>
+                
+                    </tbody>
+                  </table>
+                   <table class="table">
+                    <thead>
+                      <th class="text-center" > description</th>
+                    </thead>
+
+
+                    <tbody>
+                      <tr>
+                        <td class="text-center">{{conferance.description}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+             <div class="content">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header text-center">
+                <h4 class="card-title">list of Articles </h4>
+                  <p class="card-category">
+
+Post an article about this conference!</p>
+                  <a class="btn btn-secandery" href="{% url 'chercheur:CreeArticle' %}" >Post article </a>
+
+                  <table class="table">
+                    <thead>
+                      
+                      <th>article Title</th>
+                      <th class="text-center" >editors</th>
+                    </thead>
+
+
+                    <tbody>  
+                        
+                      <tr>
+
+                        <td>article 1</td>
+                        <td class="text-center">james smith</td>
+                        
+                      </tr>
+                       <tr>
+
+                        <td>article 2</td>
+                        <td class="text-center" >frederic johnson</td>
+                        
+                      </tr>
+                        
+                    </tbody>
+
+
+                  </table>
+                 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+  
+
+
+                 
+
+
+
+          
+              
+  
+ {% endblock %}

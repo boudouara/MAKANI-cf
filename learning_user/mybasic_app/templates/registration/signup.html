@@ -1,0 +1,68 @@
+{% extends "account/mybase.html" %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+
+
+
+<div class="container">
+
+{% if registered %}
+
+<h1>  Tank You for registirations </h1>
+
+{% else %}
+
+
+
+      <h2>Sign up as a {{ user_type }}</h2>
+</div>
+<form class="form-signin"  role="form" method="post" enctype="multipart/form-data"> 
+
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+
+        {{ form|crispy }} 
+      
+      
+</div>
+
+
+        <button type="submit" class="btn btn-success">Sign up</button>
+      </form>
+    
+
+
+  </div>
+
+
+ 
+
+{% endif %}
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

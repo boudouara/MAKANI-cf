@@ -1,0 +1,68 @@
+{% extends 'Contact/base.html' %}
+{% block content %}
+
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text{
+        color: white;
+    }
+
+    .card{
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+
+</style>
+
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class=" col-md- col-md-10 mx-auto">
+                <div class="site-heading">
+
+                    <h3 class=" site-heading my-4 mt-3 text-white">
+                     {% if user.is_authenticated %}
+                        Welcome to  Contact  CF-Makani-_Admin  :  {{ user.username }}
+                        {% else %}
+                        Welcome to  Contact CF-Makani-_Admin
+                        {% endif %}
+                    </h3>
+                    <p class="text-light"> Awsome !!! &nbsp;
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+     
+            {% for post in post_list %}
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">
+              | Pour le Contact Generale  de :
+                    {{post.title_de_problem }}</h2>
+                    <p class="card-text text-muted h6">
+                    | merci et  conatcte nous , by :{{ post.Perssone }} </p>
+                    <p class="card-text text-muted h6">
+            | Date de reglage cette Contact  :{{ post.created_on}}</p>
+                    <p class="card-text">{{post.content|slice:":200" }}</p>
+                    <a href="{% url 'Contact_Info_Adminstration:post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+      
+    </div>
+</div>
+{%endblock%}

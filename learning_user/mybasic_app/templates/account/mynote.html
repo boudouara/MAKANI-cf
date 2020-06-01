@@ -1,0 +1,43 @@
+
+{% extends 'Templchercheur/mainchr.html' %}
+{% load static %}
+{% block body_block %}
+<div class="content">
+<div class="wrapper">
+    <div class="page">
+      <img src="{% static 'G-Admin_cherch_eval/img/dots.png' %}" class="dots">
+      <img src="{% static 'G-Admin_cherch_eval/img/path1.png' %}" class="path">
+
+
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header text-center">
+                <h4 class="card-title">list of My notes </h4>
+                  <p class="card-category">
+this list represents the Conferences offered by your company</p>
+              </div>
+              <div class="card-body">
+                <div class="col-sm-6">
+
+
+{% for td in user.todolist.all %}
+<h5> Note : <p><a href="/{{td.id}}">{{td.name}}</a> </p></h5>
+<br>
+
+
+{% endfor %}
+
+</div>
+<a type="submit", class="btn btn-success" href="{% url 'LoginByProfile' %}" >
+         Back to my Profile   </a>
+              </div>
+            </div>
+          </div>
+        </div>
+ </div>
+</div>
+</div>
+
+
+{% endblock %}

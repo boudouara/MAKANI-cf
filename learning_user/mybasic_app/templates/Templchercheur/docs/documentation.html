@@ -1,0 +1,32 @@
+{% extends 'Templchercheur/mainchr.html' %}
+{% load static %}
+{% block body_block %}
+<!-- ahmed_debut -->
+
+<br><br><br><br>
+
+
+<div class="container">
+<h1> Les artcile au se moment pour vous : {{ user.username }}</h1> <hr><hr>
+
+
+{% for art in articles %}
+ <div class="card card-register" style="width:870px">
+  <br>
+<h1>-   Name d'article : {{art.name}} </h1>
+<h1>-   de Confrnces :  {{art.Conferance}}  </h1>
+<h1>-   la date de poste : {{art.date_posté}} </h1>
+</div>
+
+               <a href="#" class="btn btn-info btn-round btn-lg"> Evalueé </a>
+            <a href="#" class="btn btn-info btn-round btn-lg"> detaile d'article </a>
+              
+<br><br>
+
+{% endfor %}
+</div>
+
+
+
+{% endblock %}
+<!-- ahmed_fine -->

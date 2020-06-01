@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+  <link rel="stylesheet" href= "{% static "css/main.css" %}">
+
+  <title>MAKANI_cf</title>
+</head>
+
+<body>
+
+
+<style type="text/css">
+#timedate {
+  font: small-caps lighter 43px/150% "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  text-align:left;
+  width: 50%;
+  color:#2d2d2d;
+  border-left: 2px solid #ed1f24;
+  padding: 20px;
+}
+
+</style>
+
+<script type="text/javascript">
+  // START CLOCK SCRIPT
+
+Number.prototype.pad = function(n) {
+  for (var r = this.toString(); r.length < n; r = 0 + r);
+  return r;
+};
+
+function updateClock() {
+  var now = new Date();
+  var milli = now.getMilliseconds(),
+    sec = now.getSeconds(),
+    min = now.getMinutes(),
+    hou = now.getHours(),
+    mo = now.getMonth(),
+    dy = now.getDate(),
+    yr = now.getFullYear();
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var tags = ["mon", "d", "y", "h", "m", "s", "mi"],
+    corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2)];
+  for (var i = 0; i < tags.length; i++)
+    document.getElementById(tags[i]).firstChild.nodeValue = corr[i];
+}
+
+function initClock() {
+  updateClock();
+  window.setInterval("updateClock()", 1);
+}
+
+// END CLOCK SCRIPT
+
+</script>
+
+
+
+  <!--start Upper Navbar-->
+  <div class="upper-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <i class="fa fa-phone"></i> <span>07100089000</span> ,
+          <i class="fa fa-envelope"></i> MembreMakani@MAKANI.CF
+        </div>
+        <div class="col-sm text-right">
+          <span>let's Share </span>
+          2020 ... 
+          <span class="get-Quoat"> Easy with MAKANI -CF-   </span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!--end Upper Navbar-->
+
+
+  <!--start  Navbar-->
+
+  <nav class="navbar navbar-expand-lg navbar-light ">
+     <!-- <body onLoad="initClock()">
+
+  <div id="timedate">
+    <a id="mon">January</a>
+    <a id="d">1</a>,
+    <a id="y">0</a><br />
+    <a id="h">12</a> :
+    <a id="m">00</a>:
+    <a id="s">00</a>
+    <a id="mi">000</a>
+  </div>-->
+  
+    <div class=" container">
+
+      <a class="navbar-brand" href="{% url "homme" %}">
+        <span>MAKANI</span>
+
+        <span>-CF-</span>
+      </a>
+      <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span> OPTIONS  </button>-->
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">HOME</a>
+          </li>
+     
+            <li class="nav-item active ">
+            <a class="nav-link" href="{% url 'Aboute__Us' %}">About<span class="sr-only">(current)</span></a>
+          </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "Info_Poste" %}">FAQ</a>
+          </li>
+
+  {% if not  user.is_authenticated %}
+       
+
+      <li class="nav-item">
+            <a class="nav-link"  href="{% url 'login' %}">log in</a>
+          </li>
+
+
+     <li class="nav-item">
+            <a class="nav-link" href="{% url  'evaluteur_signup'  %}">INSCRIPTION</a>
+          </li>
+
+
+<li class="nav-item">    
+    <a class="nav-link"  href="{% url 'chercheur_signup' %}">Sigunp</a>
+</li>
+
+
+
+
+{% else %}
+
+    <li class="nav-item active ">
+        <a  class="nav-link"  href="{% url "Create_Newblog" %}" >  
+        Create Now ! </a>
+         </li>
+
+
+   {% if user.is_evaluteur %}
+        <li class="nav-item active ">
+        <a  class="nav-link"  href="{% url "evaluteur:dashboardeval" %}"> Profile : {{ user.username }}  </a>
+         </li>
+
+          {% endif %}  
+      
+
+         
+           {% if user.is_chercheur %}
+   <li class="nav-item active ">
+        <a  class="nav-link"  href="{% url "chercheur:dashboardchrch" %}"> Profile : {{ user.username }}  </a>
+         </li>
+          {% endif %}  
+
+
+
+    
+     {% if user.is_superuser %}
+
+         <li class="nav-item active ">
+        <a  class="nav-link"  href="{% url "dashboard" %}" >  
+        Profile : {{ user.username }}  </a>
+         </li>
+
+
+
+{% endif %}  
+
+
+      <li class="nav-item active ">
+            <a class="nav-link" href="{% url 'logout'  %}">Logout </a>
+          </li>
+
+
+
+
+
+{% endif %}
+
+        </ul>
+      </div>
+    </div>
+     <form class="form-inline my-2 my-lg-0" action='/search/'>
+      <input class="form-control mr-sm-2" type="search" name='q'
+       placeholder="Search" aria-label="What DO you want to find">
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+  </nav>
+  <!--end  Navbar-->
+
+  <!-- start slider-->
+
+  <div class="slider">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <h1>THIRD CONFERENCE<br> ON
+          INFORMATICS <br> <span>IAM CONFERENCE 2020</span> <br> CONFERENCE</h1>
+        <div class="overlay"></div>
+        <div class="carousel-item carousel-one active">
+          <img src="{% static "img/conf.jpg" %}" class="d-block w-100" alt="first slide">
+        </div>
+        <div class="carousel-item carousel-two">
+          <img src="{% static "img/conference.jpg" %}"class="d-block w-100" alt="secand slide">
+        </div>
+        <div class="carousel-item carousel-three">
+          <img src="{% static "img/con3.jpg" %}" class="d-block w-100" alt="third slide">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!--end  slider-->
+
+
+
+
+
+
+  <!--  start Features-->
+  <div class="Features text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-3">
+          <i class="fa fa-lightbulb-o fa-3x rounded-circle "></i>
+          <h3>Great 1</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+          <i class="fa fa-cog fa-3x rounded-circle"></i>
+          <h3>Great 2</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+          <i class="fa fa-cloud fa-3x rounded-circle"></i>
+          <h3>Great 3</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+          <i class="fa fa-bookmark fa-3x rounded-circle"></i>
+          <h3>Great 4</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end  Features-->
+
+
+  <!-- start Overview -->
+  <div class="Overview  text-center">
+    <div class="container">
+      <h2 class="h1">Site Overview </h2>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+      <h4>lets start today</h4>
+      <button>View more</button>
+    </div>
+  </div>
+  <!--end Overview -->
+
+
+
+  <!--start  conferences-->
+
+  <div class="our-conferences text-center">
+    <div class="container">
+      <h2>Our Conferences</h2>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+      <ul class="list-unstyled row">
+        <li data-class="all" class=" active col-md">All</li>
+        <li data-class=".Web" class="col-md">Web</li>
+        <li data-class=".Design" class="col-md">Design</li>
+        <li data-class=".Conseption" class="col-md">Conseption</li>
+        <li data-class=".Bdd" class="col-md">Bdd</li>
+      </ul>
+    </div>
+    <div class="shuffle-imgs">
+      <div class="row shuffle-images">
+        <div class="col-sm">
+          <img class="Bdd" src="{% static "img/1.jpg" %}" alt="" />
+        </div>
+        <div class="col-sm">
+          <img class="Bdd" src="{% static "img/2.jpg" %}" alt="" />
+        </div>
+        <div class="col-sm">
+          <img class="Design" src="{% static "img/3.jpg" %}" alt="" />
+        </div>
+        <div class="col-sm">
+          <img class="Design" src="{% static "img/4.jpg" %}" alt="" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <img class="Conseption" src="{% static "img/5.jpg" %}"  alt="" />
+        </div>
+        <div class="col-sm">
+          <img class="Conseption" src="{% static "img/6.jpg" %}"  alt="" />
+        </div>
+        <div class="col-sm">
+          <img class="Web" src="{% static "img/8.jpg" %}"  alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end confernces-->
+
+
+  <!--start Latest Posts-->
+  <div class="Latest-Posts text-center">
+    <div class="container">
+      <h2 class="text-center">Closest Conferences</h2>
+      <p class=" section-description text-center">Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry.<br>
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+      <div class="row ">
+        <div class=" col-sm-6 col-md-4">
+          <div class="card">
+            <img src="{% static "img/pos1.png" %}" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">
+                conference of the grandes écoles</h5>
+              <h6 class="card-subtitle mb-2 text-muted"> 12-12-2020</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="card-link">Veiw  More</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="   col-sm-6 col-md-4">
+          <div class="card ">
+            <img src="{%static "img/pos2.png" %}" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">
+                conference of the grandes écoles</h5>
+              <h6 class="card-subtitle mb-2 text-muted">10-12-2020</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="card-link">Veiw More</a>
+            </div>
+          </div>
+        </div>
+        <div class=" col-sm-6 col-md-4">
+          <div class="card ">
+            <img src="{% static "img/pos3.png" %}" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">
+                conference of the grandes écoles</h5>
+              <h6 class="card-subtitle mb-2 text-muted">14-12-2020</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="card-link">Veiw More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+  <!--end  Latest Posts-->
+
+
+
+  <!--start Testimonials
+  <div class="Testimonials">
+    <div class="overlay"></div>
+<div class="container">
+
+  <div id="Testimonials" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#Testimonials" data-slide-to="0" class="active"></li>
+      <li data-target="#Testimonials" data-slide-to="1"></li>
+      <li data-target="#Testimonials" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        
+        <div class="carousel-caption d-none d-md-block">
+          <img src="img/undraw_profile_pic_ic5t.svg" alt="...">
+          <h3>Ben Saber Djamal</h3>
+          <span>ESI-SBA</span>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        
+        <div class="carousel-caption d-none d-md-block">
+          <img src="img/undraw_profile_pic_ic5t.svg" alt="...">
+          <h3>Klouche Bent Nbi</h3>
+          <span>ESI-SBA</span>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+       
+        <div class="carousel-caption d-none d-md-block">
+          <img src="img/undraw_profile_pic_ic5t.svg" alt="...">
+          <h3>Mahamed Nadir</h3>
+          <span>ESI-SBA</span>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#Testimonials" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#Testimonials" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+</div>
+
+  </div>
+  end Testimonials-->
+
+
+
+
+  <!--start  Why Choose Us Section-->
+  <div class=" Choose-Us ">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <img src="{% static "img/w5.jpg" %}" alt="" />
+        </div>
+        <div class="col-6">
+          <h2 class="h1">Why Choose Us</h2>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. iciendis sunt</p>
+          <p>
+            dolores ab laboriosam similique ducimus! Eaque similique praesentium, quo inventore hic eligendi. Ipsum.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end  Why Choose Us Section-->
+
+
+  <!--Create Statistics Section-->
+  <div class="stats text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <i class="fa fa-users fa-fw fa-5x"></i>
+          <span class="number">624</span>
+          <p>Happy Cleints</p>
+        </div>
+        <div class="col-sm-3">
+          <i class="fa fa-briefcase fa-fw fa-5x"></i>
+          <span class="number">232</span>
+          <p>Amazing Confernses</p>
+        </div>
+        <div class="col-sm-3">
+          <i class="fa fa-life-ring fa-fw fa-5x"></i>
+          <span class="number">65.300</span>
+          <p>Articles Archived</p>
+        </div>
+        <div class="col-sm-3">
+          <i class="fa fa-comments fa-fw fa-5x"></i>
+          <span class="number">624</span>
+          <p>Comments Posted </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--en Create Statistics Section-->
+
+
+  <!--Create Contact Us Section-->
+  <div class="Contact-Us ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-left">
+          <p>Do You Have Any Problem ? Contact Us Immediately</p>
+        </div>
+        <div class="col-md-6 text-right">
+          <a href="{% url 'Contact_Info_Adminstration:contact' %}"> Contact Us </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end Create Contact Us Section-->
+
+
+  <!--start  Footer-->
+  <div class=" Footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="condition">
+            <span>GENERAL  </span><span>Conditions</span>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur sequi 
+              ipsum molestiae ratione, nobis dolorem laboriosam veniam tempora incidunt
+               mollitia voluptates necessitatibus harum quam,
+               perferendis, dicta distinctio omnis placeat sit.</p>
+               <a href="#">Read More</a>
+          </div>
+
+        </div>
+        <div class="col-md-3">
+          <div class="halpful">
+            <h2>Helpful Links</h2>
+            <div class="row">
+              <div class="col">
+                <div class="list-unstyled">
+                  <li>Home</li>
+                  <li>About</li>
+                  <li>Contact</li>
+                  <li>add articles </li>
+                  <li>Inscription</li>
+                </div>
+
+              </div>
+              <div class="col">
+                <div class="list-unstyled">
+                  <li>Mod_articles</li>
+                  <li>FAQ</li>
+                  <li>confernces</li>
+                  <li>Articles</li>
+                  <li>Sup-article</li>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="contact">
+            <h2>Contact Us</h2>
+            <ul>
+              <li>Adress: SBA </li>
+              <li> Phone:0710000000042</li>
+              <li>E-mail:<a href="mailto:n.boudouara@esi-sba.dz?subject=Contact"> Makani@makan.cf</a></li>
+            </ul>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!--end  Footer-->
+
+
+  <!--start  Copyright Section & Discussions-->
+
+<div class=" Copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col text-left text-uppercase">
+        Copyright 2020 MAKANI_cf &copy All Right Riserved
+      </div>
+      <div class="col text-right">
+        <ul class="list-unstyled">
+          <li>
+            <a href="#"> <i class="fa fa-facebook"></i></a>
+          </li>
+          <li>
+            <a href="#"> <i class="fa fa-envelope"></i></a>
+          </li>
+          <li>
+            <a href="#"> <i class="fa fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#"> <i class="fa fa-google-plus"></i></a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!--end Create Copyright Section & Discussions-->
+
+
+  <script src="{% static "js/jquery-3.4.1.min.js" %}"></script>
+  <script type="popper" src="{% static "popper.js" %}"></script>
+
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+  <script src="{% static "js/main.js" %}"></script>
+
+</body>
+
+</html>

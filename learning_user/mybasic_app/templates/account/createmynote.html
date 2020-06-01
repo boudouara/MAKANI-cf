@@ -1,0 +1,55 @@
+{% extends 'Templchercheur/mainchr.html' %}
+
+
+{% load crispy_forms_tags %}
+
+{% block body_block %}
+
+
+ <div class="content">
+	 <div class="content">
+<div class="wrapper">
+    <div class="page">
+      <img src="{% static 'G-Admin_cherch_eval/img/dots.png' %}" class="dots">
+      <img src="{% static 'G-Admin_cherch_eval/img/path1.png' %}" class="path">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header text-center">
+                <h4 class="card-title">Create Note </h4>
+                  <p class="card-category">
+In this section you can create many notes to later remind you of some important events </p>
+              </div>
+              <div class="card-body">
+                <div class="col-sm-6">
+
+<form  method="POST" action="{% url "create" %}">
+	
+{% csrf_token %}
+
+<div class="input-group mb-3">
+	
+		<button type="submit" name="save" class="btn btn-success">
+			Create New Note 
+		</button>
+	</div>
+{{ form.name|as_crispy_field}}
+
+</form>
+
+
+</div>
+<br><br><br><br><br>
+<a type="submit", class="btn btn-success" href="{% url 'LoginByProfile' %}" >
+         Back to my Profile   </a>
+			  </div>
+			</div>
+		  </div>
+		</div>
+ </div>
+</div>
+	 </div>
+ </div>
+/
+
+{% endblock %}

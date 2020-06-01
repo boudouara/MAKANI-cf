@@ -1,0 +1,52 @@
+{% block body_block %}
+
+
+ 
+    <div class="content">
+      <div class="row">
+        <div class="col-md-11">
+          <div class="card">
+ 
+<h1 > 
+Nombre de Tous des Articles Postes : <br> {{ nbrArctl }} Articles 
+</h1>
+
+  <h2 style="color:blue;"> La Liste des  Articles :
+  <br>   </h2>
+
+       {% for art in article_list %}
+            <ul>
+            	<br><br>
+             <li>
+
+             <h1>	Title d'article : {{ art.name }} </h1>
+
+          <h4>par Mr/Md :  {{art.author}} </h4> 
+         
+         <h4>  dans Conferance  :  {{art.Conferance}}</h4>
+         
+
+         <h4> la date de poste cette articles  :  {{art.date_posté}} </h4>
+
+         <h3> Etat d'article >(Hadi remrque )> hnaa khasnaaaa etat t3h ida tshehee  wla mzall wlaa rah en cour de correction
+
+ <br>
+  w 3ndee cherhcerrr kyn li ygol kifkif non chrhcrr ychof swlhe mchi kolch chrch swalhehom donc eval 3ndeh kima di mais mchi hak tkon detail 3laa wach ysera f conf howa hada yheemeh mais eval yhemeh info bch yshehe breeekkkkkkk
+
+          </h3>
+
+
+                                    </li>
+         </ul>
+        {% endfor %}
+    
+</div>
+</div>
+</div>
+</div>
+
+  
+
+
+
+{% endblock %}

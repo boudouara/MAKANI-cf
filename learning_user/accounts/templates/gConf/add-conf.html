@@ -1,0 +1,74 @@
+{% extends 'accounts/main.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="title">Create Conference</h5>
+              </div>
+              <div class="col-sm-6">
+                                  
+
+                <a class="btn btn-success" href="{% url 'comiteCreate' %}">Create Comite</a>
+                <i class="material-icons"></i>
+                                  
+                </div>
+              <div class="card-body">
+                <form method="post">
+                     
+                  {% csrf_token %}
+
+                  {{ form|crispy}}
+                  
+              <div class="card-footer">
+                <a class="btn btn-warning" href="{% url 'ges_conf' %}">Cancel</a>
+                <button type="submit" class="btn btn-fill btn-primary">Create</button>
+              </div>
+
+
+
+            </div>
+          </div>
+         
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Background</li>
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger background-color">
+            <div class="badge-colors text-center">
+              <span class="badge filter badge-primary active" data-color="primary"></span>
+              <span class="badge filter badge-info" data-color="blue"></span>
+              <span class="badge filter badge-success" data-color="green"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="adjustments-line text-center color-change">
+          <span class="color-label">LIGHT MODE</span>
+          <span class="badge light-badge mr-2"></span>
+          <span class="badge dark-badge ml-2"></span>
+          <span class="color-label">DARK MODE</span>
+        </li>
+
+          
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% block body_block %}
+
+    <div class="content">
+      <div class="row">
+        <div class="col-md-11">
+          <div class="card">
+ 
+
+<h1 > 
+Nombre de Tous des chercheur  :{{ nbrchrch }} Chercheur 
+</h1>
+
+
+  <h2 style="color:blue;"> detailles avec d'etat de chaque chrcheur  :
+  <br>   </h2>
+ <hr/> <hr/> 
+      {% for user in user_list  %}
+         {% if user.is_chercheur %}
+                       
+            <ul>
+            	<br><br>
+             <li>
+                                
+ <h3 >Username : {{ user.username }} </h3>
+<h3>Email : {{ user.email }}</h3>
+ <h3> Full Name:  {{ user.first_name }} {{ user.last_name }} </h3>
+<h4>Organization : {{ user.Organization }}</h4>
+<h4>Phone : {{ user.Phone }}</h4>
+<h4>Adersse 01(Principale): : {{ user.Address_line_principale }}</h4>
+<h4>Adersse02 : {{ user.Address_line }}</h4>
+<h4>Country : {{ user.Country }}</h4>
+<h4>City : {{ user.City }}</h4>
+<h4>Poste code : {{ user.Post_code }}</h4>
+<h4>ID : 5q1xg4!6ml!u{{ user.pk }}k7g2 </h4>
+<h4>Site : {{ user.site_Personnel }}</h4>
+
+                  
+
+   <hr/> <hr/> 
+
+           
+ </li>
+         </ul>
+    {% endif %}
+      {% endfor %}
+</div>
+</div>
+</div>
+</div>
+
+  
+
+
+
+{% endblock %}

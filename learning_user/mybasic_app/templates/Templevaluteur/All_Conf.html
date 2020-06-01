@@ -1,0 +1,72 @@
+{% block body_block %}
+
+
+ 
+    <div class="content">
+      <div class="row">
+        <div class="col-md-11">
+          <div class="card">
+ 
+<h1 > 
+Nombre de Tous des Confernces Prende en charge   <br>  est :{{ nbrConf }} Confernces  
+</h1>
+
+  <h2 style="color:blue;"> La Liste des  Confernces qui sont Prsente au se moment  :
+  <br>   </h2>
+
+<ol>
+       {% for conf in conferance_list %}
+         
+            <ul>
+              <br><br>
+  <li>
+
+             <h1> le Nom de cette Confrences  : {{ conf.title }} </h1>
+              <h1>Commites cette Confrences  : {{ conf.Commite }} </h1>
+
+          <h4>de email unique:  {{conf.email}} </h4> 
+
+
+          {% for topic in conf.topic.all %}
+         <li>  topic  :  {{topic.title }} </li> 
+         {% endfor %}
+   
+       {% if con.link|length > 0 %}
+         <h4> Voilla le lien de cette confernce pour plus d'info  : 
+          {{ conf.link }} </h4>
+          {% else %}
+          <h4 style="color:red;"> le  site de cette Confrences elle resoudre qlq regles en se moment !</h4>
+        {% endif %}
+
+         <h4> Creé en  : {{ conf.date_created }}</h4>
+
+
+<h4> La date de debut pour possible de poste est le : {{ conf.start_day_sub}} 
+<br> Jus'qua le {{ conf.end_day_sub }}
+    </h4>
+
+<h4> La date de evalution est le : {{ conf.start_day_eval}} 
+<br> Jus'qua le {{ conf.end_day_eval }}
+    </h4>
+
+<h4> Adress est : {{ conf.adress }}</h4>
+
+<h4> Conrty est : {{ conf.country }} avec city {{conf.city  }}et poste code {{ conf.postal_code}}</h4>
+
+</li>
+         </ul>
+
+        {% endfor %}
+    
+
+<p><a href="{% url 'Contact_Info_Adminstration:contact' %}"> Pour plus d'information Contact Nous !!! </a></p>
+</div>
+</div>
+</div>
+</div>
+
+  
+
+
+
+{% endblock %}

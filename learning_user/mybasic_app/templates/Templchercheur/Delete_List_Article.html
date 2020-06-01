@@ -1,0 +1,60 @@
+{% extends 'Templchercheur/mainchr.html' %}
+{% load static %}
+{% block body_block %}
+ 
+
+  <div class="wrapper">
+    <div class="page">
+      <img src="{% static 'G-Admin_cherch_eval/img/dots.png' %}" class="dots">
+      <img src="{% static 'G-Admin_cherch_eval/img/path1.png' %}" class="path">
+
+<div class="content">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-upgrade text-center">
+              <div class="card-header text-center">
+                <h4 class="card-title">list of Articles </h4>
+                  <p class="card-category">
+<h1> User :{{ user.username }} ,</h1>
+<h2>  Il existe {{articles.count }} Article </h2>
+  <br><br><br><br>
+ 
+
+{% if articles|length > 0 %}
+
+  <h2 style="color:#ffffff;"> Attention ! </h2>
+   <p>
+this deletion definitely! Final confirmation otherwise Article Clicker you can delete! !</p>
+
+
+
+
+        {% for art in articles %}
+
+        <div class="btn-wrapper pt-3">
+          <a href="{% url 'chercheur:Delate' art.id %}">
+            <button href="{% url 'chercheur:Delate' art.id %}" class="btn btn-simple btn-primary">
+              <i class="tim-icons icon-paper"></i>
+               {{art}}
+            </button>
+          </a>
+        </div>
+
+        {% endfor %}
+{% else %}
+  <h3 style="color:blue;">
+* There are no articles To delete!  </h3>
+    <h5>
+Create a new <a href="{% url 'chercheur:CreeArticle' %}">Create</a></h5>
+ {% endif %}
+        
+      </div>
+    </div>
+  </div>
+
+</div>
+            </div>
+          </div>
+        </div>
+</div>
+{% endblock %}

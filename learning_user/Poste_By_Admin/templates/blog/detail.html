@@ -1,0 +1,23 @@
+{% extends "Poste_by_Admin/base.html" %}
+
+
+{% block content %}
+
+
+    <div class='row'>
+
+
+     {% include 'blog/list-inline.html' with blog_post=object detail=True %}
+
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_staff %}           <!-- staff how super user!-->
+         <div class='container'>
+   <div class="card-header text-left">
+            <a  class="btn btn-success" href='{{ object.get_edit_url }}'>Edit</a>
+            <a class="btn btn-success" href='{{ object.get_delete_url }}'>Delete</a>
+  </div>
+        {% endif %}
+    {% endif %}
+
+    </div>
+{% endblock %}

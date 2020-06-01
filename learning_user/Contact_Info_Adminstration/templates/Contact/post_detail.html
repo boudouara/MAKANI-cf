@@ -1,0 +1,22 @@
+{% extends 'Contact/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 card mb-4 mt-3 left top">
+            <div class="card-body">
+                <h2> Titre de cette Contact :</h2>
+                <h1>{% block title %}
+                 {{ object.title_de_problem }} 
+               {% endblock title %}</h1>
+               <h4>Merci pour contact redige par Nous : </h4>
+                <p class="text-muted"> {{ object.Perssone }} | {{ object.created_on }} </p>
+                <h3> Rusultat de cette Contact : </h3>
+                <p class="card-text"> {{ object.content }}</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

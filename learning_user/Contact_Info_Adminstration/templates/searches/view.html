@@ -1,0 +1,27 @@
+{% extends "Poste_by_Admin/base.html" %}
+
+
+{% block content %}
+
+<div class='row'>
+    <div class='col-12 col-8 mx-auto'>
+                {% if query %}
+
+                     <p class='lead'>You searched for {{ query }} ?</p>
+                
+
+                {% endif %}
+
+
+                {% for blog_item in blog_list %}
+
+                      {% include 'blog/list-inline.html' with blog_post=blog_item truncate=True detail=False %}
+                {% endfor %}
+
+
+    </div>
+
+
+</div>
+
+{% endblock %}

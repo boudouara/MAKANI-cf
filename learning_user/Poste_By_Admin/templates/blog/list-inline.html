@@ -1,0 +1,63 @@
+ <div class='col-12 col-md-10 mb-3 mx-auto'>
+ <div class='card {% if not blog_post.publish_date %} border border-warning text-dark {% endif %}'>
+     <hr><hr><hr><hr>
+    
+    <div class='card-body'>
+        <div class="container">
+                   
+<div >
+    <h1> Le Nom de  Poste :   {{blog_post.title}} </h1>
+</div>
+<h5> Pour Photo  </h5>
+        {% if blog_post.image %}
+            <a href="{{ blog_post.get_absolute_url }}">
+                    <img src="{{ blog_post.image.url }}" class='card-img-top' />
+            </a>
+    {% else %}
+
+<p> il n'existe pas une photo </p>
+        {% endif %}
+    </div>
+            
+
+        <h5 class='card-title'>{{ blog_post.title }}</h5>
+        <p class='card-text'>
+            <small class='text-muted'>{{ blog_post.publish_date }}</small>
+            {% if truncate %}
+                {{ blog_post.content|linebreaks|truncatewords:30 }}
+            {% else %}
+                {{ blog_post.content|linebreaks }}
+            {% endif %}
+        </p>
+        
+<div class="container">
+<h3> Pour les document </h3>
+     {% if blog_post.Docment_By_Admin %}
+
+     <div class="">
+      <h6> clicke pour voir detailles ou bien telechaarge :</h6>               
+            <a href="{{ blog_post.Docment_By_Admin.url }}">
+            {{ blog_post.Docment_By_Admin.url }}
+            </a>
+        </div>
+                    
+                    {% else %}
+        <p> il n'existe pas une Documentation  </p>
+        {% endif %}
+</div>
+<br> <br>
+<div class="container">
+        {% if not detail %}
+            {% if not blog_post.publish_date %}
+           
+
+             Draft 
+
+             {% endif %}
+           <h4> <a href="{{ blog_post.get_absolute_url }}"> Voir Detaille </a></h4>
+
+        {% endif %}
+    </div>
+</div>
+ </div>
+</div>

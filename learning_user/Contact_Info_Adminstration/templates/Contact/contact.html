@@ -1,0 +1,88 @@
+{% extends 'accounts/main.html'%}
+{% block content %}
+
+<style>
+        .container{
+             padding-top: 15px;
+        }
+
+    #id_name{
+        width:100%
+        }
+
+    #id_message{
+        width:100%
+        }
+
+    #id_email{
+        width:100%
+        }
+</style>
+
+<div class="content">
+        <div class="row">
+          <div class=" col-lg-12 col-md-12">
+            <div class="card  ">
+              <div class="card-header text-center">
+
+              </div>
+              <div class="card-body-center">
+                <form method="post">
+                    <div class="col-sm-6">
+                     <h2>Send Message</h2>
+                       <form action="" method="POST">
+        {% csrf_token %}
+
+        {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+        {% endfor %}
+
+        {% for field in form.visible_fields %}
+        <div class="form-group">
+            {{ field.errors }}
+            <label>{{ field.label_tag }}</label>
+            <p>{{ field }}</p>
+        </div>
+        {% endfor %}
+        <button type="reset" class="btn btn-secandery">Reset</button>
+         <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+</div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+<div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa f <div a-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Background</li>
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger background-color">
+            <div class="badge-colors text-center">
+              <span class="badge filter badge-info " data-color="primary"></span>
+              <span class="badge filter badge-primary active" data-color="blue"></span>
+              <span class="badge filter badge-success" data-color="green"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="adjustments-line text-center color-change">
+          <span class="color-label">LIGHT MODE</span>
+          <span class="badge light-badge mr-2"></span>
+          <span class="badge dark-badge ml-2"></span>
+          <span class="color-label">DARK MODE</span>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,174 @@
+{% extends 'accounts/main.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="header"></div>
+
+<div class="content_comite">
+        <div class="row">
+          <div class="col-md-6 ml-auto mr-auto">
+            <div class="card card-upgrade">
+               <div class="card-body">
+                  <div class="card-header ">
+
+
+                  </div>
+                <br>
+                  <div class="card-header text-center">
+                    <h3 class="card-title">
+The Topics Available For Conference appointed by : {{conferance.title}} </h3>
+                      <p class="card-category">
+The topics of this conference  </p>
+                  </div>
+                   <a href="#" class="btn btn-warning ">
+                                Count : {{ conferance.topic.count }}</a>
+                <br>
+                  <div class="table-responsive table-upgrade">
+                    <table class="table">
+                      <thead>
+                             <th>title:</th>
+                             <th>Description :</th>
+                      </thead>
+                      <tbody>
+                             {% for topic in conferance.topic.all %}
+                            <tr>
+                              <td>  {{topic.title }} </td>
+                              <td>  {{topic.description }} </td>
+                            </tr>
+                             {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+<div class="content_description">
+        <div class="row">
+          <div class="col-md-6 ml-auto mr-auto">
+            <div class="card card-upgrade">
+<div class="card-header ">
+<div class="card-header text-center">
+                <h3 class="card-title">Confernse Details: {{conferance.title}} </h3>
+
+</div>
+                <a href="{% url 'confEdit' conferance.id %}" class="btn btn-success"><i class="material-icons"></i> <span>Editer </span></a>
+
+<div class="card-header text-center">
+
+    <p class="card-category">              </p>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+
+
+<div class="content_comite">
+        <div class="row">
+          <div class="col-md-6 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-body">
+                <div class="card-header ">
+                    <div class="card-header ">
+                       <div class="card-header text-center">
+                  <h3 class="card-title">Comittee : {{conferance.Commite}} </h3>
+                       </div>
+                </div>
+    
+                <div class="table-responsive table-upgrade">
+                  <table class="table">
+                    <div class="card-body">
+                      <div class="col-sm-16">
+                                  
+                <a href="{% url 'comiteEdit' conferance.Commite.pk %}" 
+                class="btn btn-success"><i class="material-icons"></i> <span>Edite</span></a>
+                          <div class="card-header text-center">
+                           <p>add, delete committee members, modify and update committee information </p>
+                          </div>
+                      </div>
+                    <thead>
+                      <th class="text-center">Evaluator</th>
+                      <th class="text-center">detailed</th>
+                      <th class="text-center">Organization</th>
+                    </thead>
+                
+                    {% for evl in conferance.Commite.evaluteur_list.all  %}
+                    <tbody> 
+                     <tr>
+                        <td>{{evl}}</td>            
+                        <td>{{conferance.Commite.sepiceilite}}</td>
+                        <td>{{conferance.Commite.Organizationof_Commite}}</td>
+                     </tr>
+                          
+                    </tbody>
+                    {% endfor %}
+                    
+                    </table>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Background</li>
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger background-color">
+            <div class="badge-colors text-center">
+              <span class="badge filter badge-primary active" data-color="primary"></span>
+              <span class="badge filter badge-info" data-color="blue"></span>
+              <span class="badge filter badge-success" data-color="green"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="adjustments-line text-center color-change">
+          <span class="color-label">LIGHT MODE</span>
+          <span class="badge light-badge mr-2"></span>
+          <span class="badge dark-badge ml-2"></span>
+          <span class="color-label">DARK MODE</span>
+        </li>
+        
+        <br>
+          <br>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}
